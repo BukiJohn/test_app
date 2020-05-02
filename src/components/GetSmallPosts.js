@@ -19,7 +19,6 @@ class GetSmallPosts extends React.Component{
             Posts.push(data.map(function(item) {
               return <PostViewer key={item.id} data={item}/>
             })) 
-            this.setState ({count: this.state.count +1})
           }
           else {
             Posts = <p>К сожалению постов нет</p>
