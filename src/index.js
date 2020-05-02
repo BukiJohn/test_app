@@ -1,46 +1,46 @@
-import React  from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Add} from './components/Add'
-import {GetPosts} from './components/GetPosts'
-import {GetSmallPosts} from './components/GetSmallPosts'
-import './App.css'
+import Add from './components/Add'
+import GetPosts from './components/GetPosts'
+import GetSmallPosts from './components/GetSmallPosts'
+import './stylesheet.css'
 
 
 const myPosts = [];
 
 class App extends React.Component {
   state = {
-    mainPost:myPosts,  
+    mainPost: myPosts,
   }
 
-  handleAddPost = (data) =>{
+  handleAddPost = (data) => {
     const nextPost = [data, ...this.state.mainPost]
-    this.setState({mainPost: nextPost})
+    this.setState({ mainPost: nextPost })
   }
-  render(){
-  return (
-    <React.Fragment>
-    <div className="mainform">
-      <div className="left_colon">
-        <div className="add">
-          <Add onAddPosts={this.handleAddPost} />
+  render() {
+    return (
+      <React.Fragment>
+        <div className="mainform">
+          <div className="left_colon">
+            <div className="add">
+              <Add onAddPosts={this.handleAddPost} />
+            </div>
+            <div className="posts_styler">
+              <GetPosts data={this.state.mainPost} />
+            </div>
+          </div>
+          <div className="right_colon">
+            <GetSmallPosts data={this.state.mainPost} />
+          </div>
         </div>
-        <div className="posts_styler">
-      <GetPosts data={this.state.mainPost} />
-    </div>
-      </div>
-      <div className="right_colon">
-      <GetSmallPosts data={this.state.mainPost} />
-      </div>
-    </div>
 
-    </React.Fragment>
-  )
-}
+      </React.Fragment>
+    )
+  }
 }
 
 
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-  );
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
