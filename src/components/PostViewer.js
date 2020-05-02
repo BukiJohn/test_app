@@ -1,31 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Avatar } from '@material-ui/core'
+import {Avatar, Tooltip} from '@material-ui/core';
+import { StylesProvider } from '@material-ui/core/styles';
+
 
 
 class PostViewer extends React.Component {
-  state = {
-    visible: false,
-  }
-  handleReadMoreClick = (e) => {
-    e.preventDefault()
-    this.setState({visible:true})
-  }
 
   
-  
-// вывод поста на екран 
+// вывод списка постов на екран 
+
   render () {
     const {author, avatar_url, text} = this.props.data
-    const {visible} = this.state
+
 
     return (
-      <div className="postViewe">
-        <p className="post__author">{author}:</p>
-          <Avatar className="avatar_style" src={avatar_url} />
-        
-        {!visible && <a onClick={this.handleReadMoreClick}href="www.ukr.net" className="post_readmore">Подробнее</a>}
-        {visible && <p className="post__text">{text}</p>}
+      <div className="postViewe">    
+      <StylesProvider injectFirst>
+        <Tooltip title={author} placement="bottom">
+          <Avatar className="avatar_style_large" src={avatar_url} />
+        </Tooltip>
+      </StylesProvider>
+        <div className="post__author">{author}</div>
+        <div className="post__text">{text}</div>
       </div>
     ) 
   }

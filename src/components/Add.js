@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, TextField } from '@material-ui/core'
+import { StylesProvider } from '@material-ui/core/styles';
 import  SaveIcon  from '@material-ui/icons/Save'
 import '../App.css'
 
@@ -12,9 +13,10 @@ class Add extends React.Component {
     state ={
       name:'',
       avatar:'',
-      text:''
+      text:'',
+      counter: 0
     }
-// событие кнопки "Добавить"
+    // событие кнопки "Добавить"
     onBtnClickHandler = (e) => 
     {
       e.preventDefault()
@@ -25,12 +27,25 @@ class Add extends React.Component {
       avatar_url: avatar,
       text: text,
     })
+    this.setState({text:''})
+    this.setState({counter: this.state.counter+1})
     }
 
+    // создание и сохранение контента
     handleChange =(e)=>
     {
       const {id, value} = e.currentTarget
       this.setState({ [id]: value })
+    }
+//вывод количества постов
+    countPosts = () =>{
+      
+      if (this.state.counter)
+      {
+        return(
+        <strong>Обьявлений: {this.state.counter} </strong>
+      )
+      }
     }
 // проверка на пустые поля 
     validate =()=>
@@ -46,6 +61,7 @@ class Add extends React.Component {
       const {name, avatar, text} = this.state
       return ( 
         <form className="form_styler">
+    <StylesProvider injectFirst>
       <TextField
           required id='name'
           label="Ваше имя"
@@ -70,10 +86,16 @@ class Add extends React.Component {
           onChange={this.handleChange}
           placeholder="Текст поста"
           multiline
-          rows={6}
+          rows={7}
           variant="outlined"
           value={text}
+          defaultValue=""
       />
+      
+      <div className='post__count'>
+      {this.countPosts()}
+      </div>
+
       <Button 
           variant="contained"
           className='add__btn'  
@@ -82,6 +104,8 @@ class Add extends React.Component {
           startIcon={<SaveIcon />}>
           Добавить
       </Button>
+      
+    </StylesProvider>
       </form>
       )
     }

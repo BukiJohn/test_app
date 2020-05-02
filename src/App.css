@@ -3,7 +3,7 @@
 }
 
 body {
-  background: rgba(0, 102, 255, 0.38);
+  background: rgba(0, 102, 255, 0.25);
   font-family: sans-serif;
   position: relative;
 }
@@ -43,40 +43,47 @@ p {
 .add {
   min-width: 80%;
   align-content: center;
-  border: 2px solid rgba(255, 208, 0, 0.788);
 }
-.add__author, .add__text, .add__btn, .add__checkrule {
-  display: block;
-  padding: 5px;
+.add__author, .add__text, .add__btn, .add__avatar, .add__checkrule {
+  display: flex;
+  margin:10px;
   width: 95%;
-  border: 1px solid rgba(100, 89, 181, 0.82);
+}
+.add__btn{
+  width:25%;
 }
 
-.add__btn {
-  box-sizing: content-box;
-  color: #FFF;
-  text-transform: uppercase;
-  background: #4471D0;
-}
 .add__btn:disabled {
   background: #CCC;
   color: #999;
 }
 
+
 .postViewe {
-  background: rgba(72, 165, 44, 0.719);
+  min-height: 60px;
+  position: relative;
+  background: rgba(72, 165, 44, 0.6);
   box-sizing: border-box;
   border-radius: 10px;
-  margin: 10px 10px;
+  margin: 0 10px 10px;
   padding: 1%;
 }
+.smallPostView{
+  min-height: 60px;
+  position: relative;
+  background: rgba(72, 165, 44, 0.6);
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 0 10px 10px;
+  padding: 1%;
+}
+
 .main_posts {
-  border: 2px solid rgba(0, 0, 255, 0.5);
   position: relative;
   padding: 1%;
 }
 .small_posts {
-  border: 2px solid rgba(250, 250, 255, 0.5);
+  position: relative;
   justify-items:right;
   min-width: 9%;
   padding: 2%;
@@ -90,18 +97,39 @@ p {
 
 }
 .form_styler {
-  justify-content: center;
+  position: relative;
+  padding: 1%;
 
 }
 .post__author{
+  font-size: 1.2em;
   box-sizing: content-box;
-}
-.avatar_style{
- float: left;
+  text-align: left;
+  margin: 10px;
+  padding: 5px;
 }
 
+.avatar_style_large{
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin:5px;
+}
+
+.avatar_style_small{
+  float: left;
+  height: 25px;
+  width: 25px;
+  margin:5px;
+  }
+
 .post__text{
-  width: 80%;
-  text-align: right;
+  text-align: inherit;
+}
+
+.post__count{
+  position: relative;
+  float: right;
+  margin:10px 30px 10px 10px;
 }
 
